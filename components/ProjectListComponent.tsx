@@ -83,7 +83,7 @@ const ProjectListComponent: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col h-fit gap-4">
+    <div className="flex flex-col h-fit gap-4 pb-4">
       {projects.length === 0 ? (
         <p className="text-gray-500">No projects available.</p>
       ) : (

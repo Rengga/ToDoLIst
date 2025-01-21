@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import axiosInstance from "@/utils/axios";
 
-const StatusDropdown: React.FC<{
-  currentStatus: string;
-  onChange: (newStatus: string) => void;
+type TaskStatus = "To Do" | "In Progress" | "Completed";
+
+interface StatusDropdownProps {
+  currentStatus: TaskStatus;
+  onChange: (newStatus: TaskStatus) => void;
   idTask: string;
   idProject: string;
-}> = ({ currentStatus, onChange, idTask, idProject }) => {
+}
+
+const StatusDropdown: React.FC<StatusDropdownProps> = ({ currentStatus, onChange, idTask, idProject }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
-  const statuses = ["To Do", "In Progress", "Completed"];
+  const statuses: TaskStatus[] = ["To Do", "In Progress", "Completed"];
 
   const availableStatuses = statuses.filter((status) => status !== currentStatus);
 
-  const handleUpdateStatus = async (newStatus: string) => {
+  const handleUpdateStatus = async (newStatus: TaskStatus) => {
     try {
       await axiosInstance.put(`/api/tasks/${idTask}`, {
         status: newStatus,
@@ -29,10 +33,10 @@ const StatusDropdown: React.FC<{
   };
 
   return (
-    <div className="">
+    <div>
       <button
         onClick={() => setIsDropdownOpen((prev) => !prev)}
-        className={`text-white h-8  w-32 flex justify-center items-center rounded-md ${
+        className={`text-white h-8 w-32 flex justify-center items-center rounded-md ${
           {
             "To Do": "bg-cusRed",
             "In Progress": "bg-cusBlue",
@@ -44,7 +48,7 @@ const StatusDropdown: React.FC<{
       </button>
 
       <div
-        className={` left-0  w-full z-10 transition-all duration-300 ease-in-out ${
+        className={`left-0 w-full z-10 transition-all duration-300 ease-in-out ${
           isDropdownOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
         } overflow-hidden`}
       >

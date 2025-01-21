@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import axiosInstance from "@/utils/axios";
 
 interface Task {
-  id?: string;
+  id: string;
   name: string;
   status: "To Do" | "In Progress" | "Completed";
 }
@@ -25,6 +25,7 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ isOpen, onClose, onSubmit, id
     setIsLoading(true);
 
     const taskData: Task = {
+      id: "",
       name: taskName,
       status: "To Do",
     };

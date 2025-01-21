@@ -1,11 +1,12 @@
 "use client";
-import axiosInstance from "@/utils/axios";
+
 import React, { useState, useEffect } from "react";
+import axiosInstance from "@/utils/axios";
 import AddTaskForm from "@/components/AddTaskForm";
 import StatusDropdown from "@/components/StatusDropdown";
 import Image from "next/image";
 
-type TaskStatus = "to do" | "in progress" | "completed";
+type TaskStatus = "To Do" | "In Progress" | "Completed";
 
 interface Task {
   id: string;
@@ -13,16 +14,29 @@ interface Task {
   status: TaskStatus;
 }
 
-export default function TasksPage({ params }: { params: { id: string } }) {
+interface TasksPageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default function TasksPage({ params }: TasksPageProps) {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
   const [projectName, setProjectName] = useState<string>("");
+  const [idProject, setIdProject] = useState<string>("");
 
-  const idProject = params.id;
+  const resolvedParams = React.use(params);
+
+  useEffect(() => {
+    if (resolvedParams) {
+      setIdProject(resolvedParams.id);
+    }
+  }, [resolvedParams]);
 
   useEffect(() => {
     const fetchTasks = async () => {
+      if (!idProject) return;
+
       try {
         const response = await axiosInstance.get(`/api/projects/${idProject}/tasks`);
         setTasks(response.data);
@@ -37,12 +51,14 @@ export default function TasksPage({ params }: { params: { id: string } }) {
       }
     };
 
-    if (idProject) {
-      fetchTasks();
-    }
+    fetchTasks();
   }, [idProject]);
 
   const handleCreateTask = (data: Task) => {
+    if (!data.id) {
+      throw new Error("Task ID is required");
+    }
+
     setTasks((prev) => [...prev, data]);
   };
 
