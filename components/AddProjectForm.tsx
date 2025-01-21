@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import axiosInstance from "@/utils/axios";
 
-// Definisikan tipe Project
 interface Project {
   name: string;
   description: string;
@@ -25,7 +24,6 @@ const AddProjectForm: React.FC<AddProjectFormProps> = ({ isOpen, onClose, onSubm
     setIsLoading(true);
 
     const projectData: Project = {
-      // Menggunakan tipe Project
       name: projectName,
       description: projectDescription,
     };

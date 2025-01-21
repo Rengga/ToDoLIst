@@ -26,7 +26,6 @@ const ProjectListComponent: React.FC = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        // Fetch projects first
         const projectsResponse = await axiosInstance.get("/api/projects");
         const projects = projectsResponse.data;
         setProjects(projects);
