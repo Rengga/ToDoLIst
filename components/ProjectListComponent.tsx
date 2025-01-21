@@ -10,7 +10,7 @@ interface Project {
   name: string;
   description: string;
 }
-
+//
 interface Task {
   id: string;
   project_id: string;
