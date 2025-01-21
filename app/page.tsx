@@ -5,10 +5,16 @@ import AddProjectForm from "@/components/AddProjectForm";
 import ProjectListComponent from "@/components/ProjectListComponent";
 import Image from "next/image";
 
+interface Project {
+  id?: string;
+  name: string;
+  description: string;
+}
+
 export default function Home() {
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
 
-  const handleCreateProject = (data: any) => {
+  const handleCreateProject = (data: Project) => {
     console.log("Project created:", data);
   };
 
@@ -23,7 +29,7 @@ export default function Home() {
         <Image
           onClick={() => setIsProjectModalOpen(true)}
           src="/create.png"
-          alt=""
+          alt="Create Project"
           width={50}
           height={50}
           className="object-contain fixed bottom-2 right-2 md:hidden bg-white rounded-full border-2"
@@ -35,7 +41,7 @@ export default function Home() {
       </div>
       <button
         onClick={() => setIsProjectModalOpen(true)}
-        className="bg-cusRed hidden md:block text-white font-bold pt-1 py-2 px-4 h-fit rounded-t-xl w-full max-w-[440px] "
+        className="bg-cusRed hidden md:block text-white font-bold pt-1 py-2 px-4 h-fit rounded-t-xl w-full max-w-[440px]"
       >
         Create Project
       </button>

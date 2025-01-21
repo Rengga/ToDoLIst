@@ -3,31 +3,37 @@
 import React, { useState } from "react";
 import axiosInstance from "@/utils/axios";
 
+interface Task {
+  id?: string;
+  name: string;
+  status: "To Do" | "In Progress" | "Completed";
+}
+
 interface AddTaskFormProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: Task) => void;
   idProject: string;
 }
 
 const AddTaskForm: React.FC<AddTaskFormProps> = ({ isOpen, onClose, onSubmit, idProject }) => {
-  const [taskName, setTaskName] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [taskName, setTaskName] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleCreateTask = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    const taskData = {
+    const taskData: Task = {
       name: taskName,
       status: "To Do",
     };
 
     try {
-      const response = await axiosInstance.post(`/api/projects/${idProject}/tasks`, taskData);
+      const response = await axiosInstance.post<Task>(`/api/projects/${idProject}/tasks`, taskData);
 
       if (!response.status.toString().startsWith("2")) {
-        throw new Error("Gagal untuk membuat Task");
+        throw new Error("Failed to create task");
       }
 
       onSubmit(response.data);
@@ -35,7 +41,7 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ isOpen, onClose, onSubmit, id
       onClose();
     } catch (error) {
       console.error(error);
-      alert("Gagal untuk membuat Task");
+      alert("Failed to create task");
     } finally {
       setIsLoading(false);
     }
