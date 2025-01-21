@@ -100,7 +100,7 @@ export default function TasksPage({ params }: { params: { id: string } }) {
 
         {tasks.length === 0 ? (
           <div className="flex w-full h-1/2 justify-center items-center">
-            <p className="text-gray-500 text-center">No tasks here yet. Tap "Create Task" or the "+" button below to add a new one!</p>
+            <p className="text-gray-500 text-center">No tasks here yet. Tap &quot;Create Task&quot; or the &quot;+&quot; button below to add a new one!</p>
           </div>
         ) : (
           <div className="flex flex-col gap-2 mt-4">
