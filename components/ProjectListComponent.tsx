@@ -73,11 +73,11 @@ const ProjectListComponent: React.FC = () => {
   if (loading) {
     return (
       <div className="w-full flex-col flex gap-4">
-        <div className="bg-cusGrey p-4 rounded-2xl h-[131] loading"></div>
-        <div className="bg-cusGrey p-4 rounded-2xl h-[131] loading"></div>
-        <div className="bg-cusGrey p-4 rounded-2xl h-[131] loading"></div>
-        <div className="bg-cusGrey p-4 rounded-2xl h-[131] loading"></div>
-        <div className="bg-cusGrey p-4 rounded-2xl h-[131] loading"></div>
+        <div className="bg-cusGrey p-4 rounded-2xl h-[131px] loading"></div>
+        <div className="bg-cusGrey p-4 rounded-2xl h-[131px] loading"></div>
+        <div className="bg-cusGrey p-4 rounded-2xl h-[131px] loading"></div>
+        <div className="bg-cusGrey p-4 rounded-2xl h-[131px] loading"></div>
+        <div className="bg-cusGrey p-4 rounded-2xl h-[131px] loading"></div>
       </div>
     );
   }
