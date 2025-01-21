@@ -19,6 +19,9 @@ const eslintConfig = [
       '@next/next/no-page-custom-font': 'off',
     },
   }),
+  ...compat.config({
+    extends: ['next/core-web-vitals', 'next/typescript'],
+  }),
 ];
 
 export default eslintConfig;
