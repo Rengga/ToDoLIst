@@ -10,7 +10,7 @@ interface Project {
   name: string;
   description: string;
 }
-//ss
+
 export default function Home() {
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
 
