@@ -77,7 +77,6 @@ const ProjectListComponent: React.FC = () => {
         <div className="bg-cusGrey p-4 rounded-2xl h-[131px] loading"></div>
         <div className="bg-cusGrey p-4 rounded-2xl h-[131px] loading"></div>
         <div className="bg-cusGrey p-4 rounded-2xl h-[131px] loading"></div>
-        <div className="bg-cusGrey p-4 rounded-2xl h-[131px] loading"></div>
       </div>
     );
   }
