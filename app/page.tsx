@@ -32,7 +32,7 @@ export default function Home() {
           alt="Create Project"
           width={50}
           height={50}
-          className="object-contain fixed bottom-2 right-2 md:hidden bg-white rounded-full border-2"
+          className="object-contain fixed bottom-4 right-4 md:hidden bg-white rounded-full border-2"
         />
 
         <AddProjectForm isOpen={isProjectModalOpen} onClose={() => setIsProjectModalOpen(false)} onSubmit={handleCreateProject} />

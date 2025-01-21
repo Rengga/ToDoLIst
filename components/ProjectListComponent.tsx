@@ -96,8 +96,8 @@ const ProjectListComponent: React.FC = () => {
                 <Link href={`/projects/${project.id}/tasks`} onClick={() => handleProjectClick(project.name)}>
                   <div className="bg-cusGrey p-4 rounded-2xl">
                     <div className="flex justify-between mb-4">
-                      <div className="font-semibold text-xl text-white max-w-[152px] truncate">{project.name}</div>
-                      <div className="block">
+                      <div className="font-semibold text-xl text-white md:max-w-[152px] truncate">{project.name}</div>
+                      <div className="hidden md:block">
                         <div className="flex h-fit gap-3 mb-2">
                           <div className="flex h-fit w-fit text-cusRed gap-1 items-center">
                             <Image src="/task.svg" alt="" width={20} height={20} className="object-contain" />
@@ -115,7 +115,24 @@ const ProjectListComponent: React.FC = () => {
                         <p className="text-white text-sm text-end">Total Tasks: {tasks.length}</p>
                       </div>
                     </div>
-                    <div className="text-gray-400 h-[30px] flex text-sm items-end">{project.description}</div>
+                    <div className="text-gray-400  flex text-sm items-end">{project.description}</div>
+                    <div className="flex justify-between items-center md:hidden mt-4 border-t pt-2 border-slate-500">
+                      <div className="flex h-fit gap-3">
+                        <div className="flex h-fit w-fit text-cusRed gap-1 items-center">
+                          <Image src="/task.svg" alt="" width={16} height={16} className="object-contain" />
+                          <div className="h-[22px] text-end text-sm">: {taskCounts["To Do"]}</div>
+                        </div>
+                        <div className="flex h-fit w-fit text-cusBlue gap-1 items-center">
+                          <Image src="/progress.svg" alt="" width={16} height={16} className="object-contain" />
+                          <div className="h-[22px] text-end text-sm">: {taskCounts["In Progress"]}</div>
+                        </div>
+                        <div className="flex h-fit w-fit text-cusGreen gap-1 items-center">
+                          <Image src="/completed.svg" alt="" width={16} height={16} className="object-contain" />
+                          <div className="h-[22px] text-end text-sm">: {taskCounts["Completed"]}</div>
+                        </div>
+                      </div>
+                      <p className="text-white text-sm text-end">Total Tasks: {tasks.length}</p>
+                    </div>
                   </div>
                 </Link>
               </div>

@@ -108,7 +108,7 @@ export default function TasksPage({ params }: TasksPageProps) {
           alt="Create Task"
           width={50}
           height={50}
-          className="object-contain fixed bottom-2 right-2 md:hidden z-10 bg-white rounded-full border-2"
+          className="object-contain fixed bottom-4 right-4 md:hidden z-10 bg-white rounded-full border-2"
         />
         <span className="text-white text-xl">Tasks for Project {projectName}</span>
 
