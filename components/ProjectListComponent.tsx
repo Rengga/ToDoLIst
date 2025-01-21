@@ -31,7 +31,7 @@ const ProjectListComponent: React.FC = () => {
         const projects = projectsResponse.data;
         setProjects(projects);
 
-        const tasksPromises = projects.map((project) => axiosInstance.get(`/api/projects/${project.id}/tasks`));
+        const tasksPromises = projects.map((project: Project) => axiosInstance.get(`/api/projects/${project.id}/tasks`));
 
         const tasksResponses = await Promise.all(tasksPromises);
 
